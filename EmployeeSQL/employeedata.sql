@@ -1,6 +1,5 @@
 --Data Engineering
 --create tables to hold the data
-x
 create table departments
 (dept_no varchar,dept_name varchar);
 alter table departments
@@ -31,7 +30,7 @@ select * from salaries
 create table titles
 (title_id varchar, title varchar);
  alter table titles
- add primary key(title_id);
+ add primary key(title_id); -- added pk to title to link to employee title under empployees table
 select * from titles
 
 create table employees
@@ -45,15 +44,15 @@ create table employees
  alter table employees
  add primary key(emp_no);
  alter table employees
-   add CONSTRAINT fk_title_id
+   add CONSTRAINT fk_title_id -- added name to fk
       FOREIGN KEY(emp_title_id) 
 	  REFERENCES titles(title_id);
 
-ALTER TABLE employees
+ALTER TABLE employees -- change data type from varchar to date refer to  ***
 ALTER COLUMN birth_date type date
 USING to_date(birth_date, 'MM:DD:YYYY'); 
 
-ALTER TABLE employees
+ALTER TABLE employees -- change data type from varchar to date refer to  ***
 ALTER COLUMN hire_date type date
 USING to_date(hire_date, 'MM:DD:YYYY');
 select * from employees
